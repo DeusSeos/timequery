@@ -12,9 +12,8 @@ fn main(){
     let addr = &args[1];
     
     match TcpStream::connect(addr) {
-        Ok(stream)=> {
+        Ok(mut stream)=> {
         // println!("Connected to server!");
-        let mut stream = stream;
         let mut buffer = [0; 512];
         let mut result = String::new();
         while stream.read(&mut buffer).unwrap() > 0 {
